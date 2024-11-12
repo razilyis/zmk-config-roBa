@@ -1,12 +1,11 @@
-
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/mouse.h>
 
 // #includeのあとのあたりにスクロール量を変更
-#define ZMK_MOUSE_DEFAULT_SCRL_VAL 100
 
+#define ZMK_MOUSE_DEFAULT_SCRL_VAL 100
 #define MOUSE 4
 #define SCROLL 5
 #define NUM 6
@@ -67,12 +66,15 @@
             tapping-term-ms = <200>;
         };
 
-        scroll_up_down: sensor_rotate_mouse_wheel_up_down {
+        scroll_up_down: rotate_mouse_wheel_up_down {
             compatible = "zmk,behavior-sensor-rotate";
             #sensor-binding-cells = <0>;
             bindings = <&msc SCRL_UP>, <&msc SCRL_DOWN>;
+
             // 追加: スクロールのタップ時間を設定 (20ms)
+
             tap-ms = <20>;
+            label = "rotate_mouse_wheel_up_down";
         };
     };
 
@@ -87,7 +89,7 @@
 &kp LCTRL         &kp LEFT_ALT  &kp LEFT_WIN  &mt LEFT_SHIFT LANGUAGE_1  &lt 1 SPACE  &lt_to_layer_0 3 LANGUAGE_2    &kp BACKSPACE  &lt 2 ENTER                             &kp DEL
             >;
 
-            sensor-bindings = <&new_behavior K_SCROLL_UP K_SCROLL_DOWN>;
+            sensor-bindings = <&scroll_up_down>;
         };
 
         layer1 {
