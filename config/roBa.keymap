@@ -62,6 +62,13 @@
             #binding-cells = <2>;
             tapping-term-ms = <200>;
         };
+
+        new_behavior: new_behavior {
+            compatible = "zmk,behavior-sensor-rotate-var";
+            label = "NEW_BEHAVIOR";
+            #sensor-binding-cells = <2>;
+            bindings = <&none>, <&none>;
+        };
     };
 
     keymap {
@@ -75,15 +82,15 @@
 &kp LCTRL         &kp LEFT_ALT  &kp LEFT_WIN  &mt LEFT_SHIFT LANGUAGE_1  &lt 1 SPACE  &lt_to_layer_0 3 LANGUAGE_2    &kp BACKSPACE  &lt 2 ENTER                             &kp DEL
             >;
 
-            sensor-bindings = <&inc_dec_kp PG_UP PAGE_DOWN>;
+            sensor-bindings = <&new_behavior 0 0>;
         };
 
         layer1 {
             bindings = <
-&kp F1   &kp F2   &kp F3   &kp F4    &kp F5                      &kp F6                &kp F7                 &kp F8           &kp F9         &kp DOLLAR
-&kp F10  &kp F11  &kp F12  &mkp MB1  &mkp MB2  &trans    &trans  &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp AT_SIGN      &kp AMPERSAND  &kp PIPE
-&trans   &trans   &trans   &trans    &trans    &trans    &trans  &kp LEFT_BRACKET      &kp RIGHT_BRACKET      &kp EXCLAMATION  &kp QUESTION   &kp SQT
-&trans   &trans   &trans   &trans    &trans    &trans    &trans  &trans                                                                       &kp HASH
+&kp F1       &kp F2        &kp F3   &kp F4    &kp F5                      &kp F6                &kp F7                 &kp F8           &kp F9         &kp DOLLAR
+&kp LS(TAB)  &kp LEFT_WIN  &kp TAB  &mkp MB1  &mkp MB2  &trans    &trans  &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp AT_SIGN      &kp AMPERSAND  &kp PIPE
+&trans       &trans        &trans   &trans    &trans    &trans    &trans  &kp LEFT_BRACKET      &kp RIGHT_BRACKET      &kp EXCLAMATION  &kp QUESTION   &kp SQT
+&trans       &trans        &trans   &trans    &trans    &trans    &trans  &trans                                                                       &kp HASH
             >;
         };
 
