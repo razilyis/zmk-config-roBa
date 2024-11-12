@@ -67,7 +67,7 @@
             compatible = "zmk,behavior-sensor-rotate-var";
             label = "NEW_BEHAVIOR";
             #sensor-binding-cells = <2>;
-            bindings = <&none>, <&none>;
+            bindings = <&kp>, <&kp>;
         };
     };
 
@@ -82,7 +82,7 @@
 &kp LCTRL         &kp LEFT_ALT  &kp LEFT_WIN  &mt LEFT_SHIFT LANGUAGE_1  &lt 1 SPACE  &lt_to_layer_0 3 LANGUAGE_2    &kp BACKSPACE  &lt 2 ENTER                             &kp DEL
             >;
 
-            sensor-bindings = <&new_behavior 0 0>;
+            sensor-bindings = <&new_behavior K_SCROLL_UP K_SCROLL_DOWN>;
         };
 
         layer1 {
@@ -101,6 +101,8 @@
 &kp LEFT_SHIFT  &kp KP_NUMBER_1  &kp KP_NUMBER_2  &kp KP_NUMBER_3  &kp PERIOD    &kp EQUAL                  &trans     &kp LC(TAB)      &kp LEFT_ARROW      &kp DOWN_ARROW  &kp RIGHT_ARROW      &kp PAGE_DOWN
 &kp LCTRL       &kp LEFT_ALT     &trans           &kp DELETE       &kp ENTER     &kp BACKSPACE              &trans     &trans                                                                    &kp END
             >;
+
+            sensor-bindings = <&new_behavior C_AC_SCROLL_UP C_AC_SCROLL_DOWN>;
         };
 
         layer3 {
