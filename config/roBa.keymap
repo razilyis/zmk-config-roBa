@@ -1,7 +1,9 @@
+#include <dt-bindings/zmk/mouse.h>
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/keys.h>
-#include <dt-bindings/zmk/mouse.h>
+#include <dt-bindings/zmk/pointing.h>
+#include <dt-bindings/zmk/pointing.h>
 
 // #includeのあとのあたりにスクロール量を変更
 
@@ -94,7 +96,7 @@
             bindings = <
 &kp F1   &kp F2        &kp F3       &kp F4    &kp F5                      &kp F6                &kp F7                 &kp F8           &kp F9         &kp DOLLAR
 &kp TAB  &kp LEFT_WIN  &kp LS(TAB)  &mkp MB1  &mkp MB2  &trans    &trans  &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp AT_SIGN      &kp AMPERSAND  &kp PIPE
-&trans   &trans        &trans       &trans    &trans    &trans    &trans  &kp LEFT_BRACKET      &kp RIGHT_BRACKET      &kp EXCLAMATION  &kp QUESTION   &kp SQT
+&trans   &trans        &trans       &trans    &mkp MB3  &trans    &trans  &kp LEFT_BRACKET      &kp RIGHT_BRACKET      &kp EXCLAMATION  &kp QUESTION   &kp SQT
 &trans   &trans        &trans       &trans    &trans    &trans    &trans  &trans                                                                       &kp HASH
             >;
 
