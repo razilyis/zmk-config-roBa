@@ -2,15 +2,21 @@ manifest:
   remotes:
     - name: zmkfirmware
       url-base: https://github.com/zmkfirmware
-    - name: kumamuk-git
-      url-base: https://github.com/kumamuk-git
+    - name: razilyis
+      url-base: https://github.com/razilyis
+    - name: caksoylar  # <-- RGB LED
+      url-base: https://github.com/caksoylar  
   projects:
     - name: zmk
       remote: zmkfirmware
-      revision: v0.3-branch
+      revision: v0.3.0
       import: app/west.yml
-    - name: zmk-pmw3610-driver
-      remote: kumamuk-git
+    - name: cirque-input-module
+      remote: razilyis
+      revision: main
+      path: modules/lib/cirque-input-module
+    - name: zmk-rgbled-widget
+      remote: caksoylar
       revision: main
   self:
     path: config
