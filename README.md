@@ -1,3 +1,3 @@
-# zmk-config-roBa
+# zmk-config-roBa_touch
 
-<img src="keymap-drawer/roBa.svg" >
+roBaをトラックボール（PMW3610）からタッチパッド（Cirque）にカスタムしたファームウエア。
