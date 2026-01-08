@@ -100,10 +100,10 @@
 
         Win-Common_Layer {
             bindings = <
-&kp LC(A)  &kp LC(X)        &kp LC(C)        &kp LC(V)        &kp LC(V)                                                 &kp LESS_THAN         &kp GREATER_THAN       &kp LCTRL        &kp PERCENT    &kp DOLLAR
-&kp N4     &kp KP_NUMBER_4  &kp KP_NUMBER_5  &kp KP_NUMBER_6  &kp ASTERISK  &kp LC(LA(KP_NUMBER_0))      &kp SEMICOLON  &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp AT_SIGN      &kp AMPERSAND  &kp DOUBLE_QUOTES
-&kp N7     &kp KP_NUMBER_1  &kp KP_NUMBER_2  &kp KP_NUMBER_3  &kp PERIOD    &kp EQUAL                    &kp COLON      &kp LEFT_BRACKET      &kp RIGHT_BRACKET      &kp EXCLAMATION  &kp QUESTION   &kp SQT
-&trans     &trans           &trans           &trans           &trans        &trans                       &trans         &trans                                                                       &kp HASH
+&kp ESCAPE      &trans        &trans       &kp LG(UP_ARROW)    &trans                                          &kp LESS_THAN         &kp GREATER_THAN       &kp LCTRL        &kp PERCENT    &kp DOLLAR
+&kp TAB         &kp LEFT_ALT  &kp LS(TAB)  &kp LG(LEFT_ARROW)  &kp LG(RIGHT_ARROW)  &trans      &kp SEMICOLON  &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp AT_SIGN      &kp AMPERSAND  &kp DOUBLE_QUOTES
+&kp LEFT_SHIFT  &trans        &trans       &kp LG(DOWN_ARROW)  &trans               &trans      &kp COLON      &kp LEFT_BRACKET      &kp RIGHT_BRACKET      &kp EXCLAMATION  &kp QUESTION   &kp SQT
+&kp LCTRL       &trans        &trans       &trans              &trans               &trans      &trans         &trans                                                                       &kp HASH
             >;
         };
 
