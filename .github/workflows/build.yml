@@ -1,5 +1,124 @@
-on: [push, pull_request, workflow_dispatch]
+name: Build ZMK firmware
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: zmk-build-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   build:
-    uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@v0.3.0
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - board: seeeduino_xiao_ble
+            shield: "roBa_R rgbled_adapter"
+            snippet: "studio-rpc-usb-uart"
+            artifact_name: "roBa_R"
+          - board: seeeduino_xiao_ble
+            shield: "roBa_L rgbled_adapter"
+            snippet: ""
+            artifact_name: "roBa_L"
+          - board: seeeduino_xiao_ble
+            shield: "settings_reset"
+            snippet: ""
+            artifact_name: "settings_reset"
+
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+      ZMK_CONFIG: ${{ github.workspace }}/config
+      ZEPHYR_TOOLCHAIN_VARIANT: zephyr
+      ZEPHYR_SDK_INSTALL_DIR: ${{ github.workspace }}/zephyr-sdk-0.17.0
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v5
+
+      - name: Install system dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            git \
+            cmake \
+            ninja-build \
+            gperf \
+            ccache \
+            dfu-util \
+            device-tree-compiler \
+            wget \
+            xz-utils \
+            file \
+            make \
+            gcc \
+            g++ \
+            python3 \
+            python3-pip \
+            python3-venv \
+            python3-setuptools \
+            python3-wheel
+
+      - name: Install Zephyr SDK
+        run: |
+          cd "${GITHUB_WORKSPACE}"
+          wget -q https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v0.17.0/zephyr-sdk-0.17.0_linux-x86_64_minimal.tar.xz
+          tar xf zephyr-sdk-0.17.0_linux-x86_64_minimal.tar.xz
+          cd zephyr-sdk-0.17.0
+          ./setup.sh -t arm-zephyr-eabi -h
+
+      - name: Create Python virtual environment
+        run: |
+          python3 -m venv .venv
+          . .venv/bin/activate
+          python -m pip install --upgrade pip
+          pip install west
+
+      - name: Initialize west workspace from config
+        run: |
+          . .venv/bin/activate
+          west init -l config
+          west update
+          west zephyr-export
+          west packages pip --install
+
+      - name: Build ${{ matrix.artifact_name }}
+        run: |
+          . .venv/bin/activate
+
+          EXTRA_ARGS=""
+          if [ -n "${{ matrix.snippet }}" ]; then
+            EXTRA_ARGS="$EXTRA_ARGS -DSNIPPET=${{ matrix.snippet }}"
+          fi
+
+          west build \
+            -s zmk/app \
+            -d "build/${{ matrix.artifact_name }}" \
+            -b "${{ matrix.board }}" -- \
+            -DSHIELD="${{ matrix.shield }}" \
+            -DZMK_CONFIG="${ZMK_CONFIG}" \
+            $EXTRA_ARGS
+
+      - name: Collect firmware
+        run: |
+          mkdir -p "artifacts/${{ matrix.artifact_name }}"
+          find "build/${{ matrix.artifact_name }}/zephyr" \
+            -maxdepth 1 \
+            \( -name "*.uf2" -o -name "*.bin" -o -name "*.hex" -o -name "*.elf" \) \
+            -exec cp {} "artifacts/${{ matrix.artifact_name }}/" \;
+          cp -f "build/${{ matrix.artifact_name }}/zephyr/.config" "artifacts/${{ matrix.artifact_name }}/" || true
+          cp -f "build/${{ matrix.artifact_name }}/zephyr/zephyr.dts" "artifacts/${{ matrix.artifact_name }}/" || true
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v6
+        with:
+          name: ${{ matrix.artifact_name }}
+          path: artifacts/${{ matrix.artifact_name }}
+          if-no-files-found: error
