@@ -78,7 +78,7 @@
     keymap {
         compatible = "zmk,keymap";
 
-        default_layer {
+        Default {
             bindings = <
 &kp Q             &kp W         &kp E         &kp R                      &kp T                                                        &kp Y        &kp U  &lt 0 I    &kp O    &kp P
 &kp A             &kp S         &kp D         &kp F                      &kp G        &kp LS(LG(S))                    &lt 5 AT_SIGN  &kp H        &kp J  &kp K      &kp L    &lt 3 MINUS
@@ -89,7 +89,7 @@
             sensor-bindings = <&inc_dec_kp C_VOLUME_UP C_VOLUME_DOWN>;
         };
 
-        FUNCTION {
+        Function {
             bindings = <
 &kp LC(A)  &kp LC(X)  &kp LC(C)    &kp LC(V)  &kp LC(V)                             &kp LESS_THAN         &kp GREATER_THAN       &kp LCTRL        &kp PERCENT    &kp DOLLAR
 &kp TAB    &kp LALT   &kp LS(TAB)  &mkp MB1   &mkp MB2   &trans      &kp SEMI       &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp AT_SIGN      &kp AMPERSAND  &kp DOUBLE_QUOTES
@@ -98,7 +98,7 @@
             >;
         };
 
-        Win-Common_Layer {
+        Common {
             bindings = <
 &kp ESCAPE      &trans        &trans       &kp LG(UP_ARROW)    &trans                                      &kp LC(W)      &kp LA(LEFT)  &mkp MB3  &kp LA(RIGHT)  &kp HOME
 &kp TAB         &kp LEFT_ALT  &kp LS(TAB)  &kp LG(LEFT_ARROW)  &kp LG(RIGHT_ARROW)  &trans      &kp LC(T)  &kp LC(PG_UP)  &mkp MB1      &kp UP    &mkp MB2       &kp PG_UP
@@ -107,7 +107,7 @@
             >;
         };
 
-        Win-Num_Layer {
+        Num {
             bindings = <
 &kp F1   &kp F2   &kp F3  &kp F4  &kp F5                              &kp PLUS      &kp MINUS  &kp N7  &kp N8  &kp N9
 &kp F6   &kp F7   &kp F8  &kp F9  &kp F10  &trans      &trans         &kp EQUAL     &kp COLON  &kp N4  &kp N5  &kp N6
@@ -118,7 +118,7 @@
             sensor-bindings = <&inc_dec_kp LC(PAGE_UP) LC(PAGE_DOWN)>;
         };
 
-        AutoMouse_Layer {
+        AutoMouseLayer {
             bindings = <
 &trans  &trans  &trans  &trans  &trans                      &trans  &trans    &trans    &trans    &trans
 &trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans  &mkp MB1  &mkp MB3  &mkp MB2  &trans
@@ -127,12 +127,12 @@
             >;
         };
 
-        Setting_Layer {
+        SettingLayer {
             bindings = <
-&trans  &trans        &trans        &trans        &trans                           &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4
-&trans  &trans        &trans        &trans        &trans  &trans      &trans       &trans        &trans        &trans        &trans        &trans
-&trans  &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &trans  &trans      &bootloader  &trans        &trans        &trans        &trans        &bt BT_CLR
-&trans  &trans        &trans        &trans        &trans  &trans      &trans       &trans                                                  &bt BT_CLR_ALL
+&trans  &trans  &trans  &trans  &trans                      &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4
+&trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans        &trans        &trans        &trans        &trans
+&trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans        &trans        &trans        &trans        &bt BT_CLR
+&trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans                                                  &bt BT_CLR_ALL
             >;
         };
     };
