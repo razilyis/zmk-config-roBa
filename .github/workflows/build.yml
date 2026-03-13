@@ -87,7 +87,7 @@ jobs:
           west init -l config
           west update
           west zephyr-export
-          west packages pip --install
+          pip install -r zephyr/scripts/requirements.txt
 
       - name: Build ${{ matrix.artifact_name }}
         run: |
@@ -121,4 +121,4 @@ jobs:
         with:
           name: ${{ matrix.artifact_name }}
           path: artifacts/${{ matrix.artifact_name }}
-          if-no-files-found: error
+          if-no-files-found: error 
