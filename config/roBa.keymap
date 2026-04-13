@@ -7,6 +7,12 @@
     flavor = "balanced";
     quick-tap-ms = <0>;
 };
+ 
+&lt {
+    flavor = "balanced";
+    tapping-term-ms = <180>;
+    quick-tap-ms = <0>;
+};
 
 &trackball {
     automouse-layer = <4>;
