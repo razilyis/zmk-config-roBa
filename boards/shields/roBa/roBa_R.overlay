@@ -1,5 +1,6 @@
 #include "roBa.dtsi"
 #include <input/processors.dtsi>
+#include <dt-bindings/zmk/input_transform.h>
 
 &default_transform {
     col-offset = <6>;
@@ -21,13 +22,17 @@
         compatible = "zmk,input-listener";
         device = <&trackball>;
 
-        /* 通常時の AML */
+        /* 通常時: AML */
         input-processors = <&zip_temp_layer 4 700>;
 
-        /* layer 3 中は AML を切ってスクロール化 */
+        /* layer 3: スクロール専用。AMLは通さない */
         scroll_mode {
             layers = <3>;
-            input-processors = <&zip_xy_to_scroll_mapper>;
+            input-processors =
+                <&zip_xy_to_scroll_mapper>
+                , <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>
+                , <&zip_scroll_scaler 2 5>
+                ;
         };
     };
 };
