@@ -92,10 +92,10 @@
 
         FUNCTION {
             bindings = <
-&kp LC(A)       &kp LC(X)  &kp LC(C)    &kp LC(V)  &kp LC(LS(V))                             &kp LESS_THAN         &kp GREATER_THAN       &kp LCTRL        &kp PERCENT    &kp DOLLAR
-&kp TAB         &kp LALT   &kp LS(TAB)  &mkp MB1   &mkp MB2       &trans      &kp SEMI       &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp AT_SIGN      &kp AMPERSAND  &kp DOUBLE_QUOTES
-&kp LEFT_SHIFT  &kp LC(F)  &trans       &trans     &mkp MB3       &trans      &kp PIPE       &kp LEFT_BRACKET      &kp RIGHT_BRACKET      &kp EXCLAMATION  &kp QUESTION   &kp SQT
-&kp LCTRL       &trans     &trans       &trans     &trans         &trans      &kp BACKSPACE  &kp ENTER                                                                    &kp HASH
+&kp LC(A)       &kp LC(X)  &kp LC(C)    &kp LC(V)  &kp LC(LS(V))                                 &kp LESS_THAN         &kp GREATER_THAN       &kp LCTRL        &kp PERCENT    &kp DOLLAR
+&kp TAB         &kp LALT   &kp LS(TAB)  &mkp MB1   &mkp MB2       &trans      &kp SEMI           &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp AT_SIGN      &kp AMPERSAND  &kp DOUBLE_QUOTES
+&kp LEFT_SHIFT  &kp LC(F)  &trans       &trans     &mkp MB3       &trans      &kp PIPE           &kp LEFT_BRACKET      &kp RIGHT_BRACKET      &kp EXCLAMATION  &kp QUESTION   &kp SQT
+&kp LCTRL       &trans     &trans       &trans     &trans         &trans      &kp LC(BACKSPACE)  &kp ENTER                                                                    &kp HASH
             >;
         };
 
@@ -104,7 +104,7 @@
 &kp ESCAPE      &kp LG(DOWN_ARROW)  &kp LG(UP_ARROW)     &kp LG(LC(D))           &kp LA(UP_ARROW)                                       &kp LC(W)      &kp LA(LEFT)  &mkp MB3  &kp LA(RIGHT)  &kp HOME
 &kp TAB         &kp LEFT_ALT        &kp LS(TAB)          &kp LG(LC(LEFT_ARROW))  &kp LG(LC(RIGHT_ARROW))  &trans             &kp LC(T)  &kp LC(PG_UP)  &mkp MB1      &kp UP    &mkp MB2       &kp PG_UP
 &kp LEFT_SHIFT  &kp LG(LEFT_ARROW)  &kp LG(RIGHT_ARROW)  &kp LG(LC(F4))          &trans                   &kp LS(LG(S))      &trans     &kp LC(PG_DN)  &kp LEFT      &kp DOWN  &kp RIGHT      &kp PG_DN
-&kp LCTRL       &trans              &trans               &trans                  &trans                   &trans             &trans     &trans                                                &kp END
+&kp LCTRL       &trans              &trans               &trans                  &kp LG(E)                &trans             &trans     &trans                                                &kp END
             >;
         };
 
